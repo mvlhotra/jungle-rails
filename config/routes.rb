@@ -15,6 +15,17 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+  # post '/someting' => 'reviews#create'
+  resources :products do
+    resources :reviews, only: [:create]
+  end
+  # product_reviews POST   /products/:product_id/reviews(.:format) reviews#create
+
+   # Example resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
 
 
   resources :orders, only: [:create, :show]
