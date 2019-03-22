@@ -132,5 +132,104 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## CREATE INITIAL USERS FOR THE REVIEWS
+User.create!({
+  first_name:      'Nik',
+  last_name:       'Mal',
+  email:           'wet_dog@hotmail.com',
+  password_digest: '###'
+})
+
+User.create!({
+  first_name:      'Quavo',
+  last_name:       'Huncho',
+  email:           'quavo_qc@hotmail.com',
+  password_digest: '###'
+})
+
+## REVIEWS
+puts "Adding some reviews to each product ..."
+
+product_1 = Product.find_by(id: 1)
+product_2 = Product.find_by(id: 2)
+product_3 = Product.find_by(id: 3)
+product_4 = Product.find_by(id: 4)
+product_5 = Product.find_by(id: 5)
+product_6 = Product.find_by(id: 6)
+product_7 = Product.find_by(id: 7)
+product_8 = Product.find_by(id: 8)
+product_9 = Product.find_by(id: 9)
+
+product_1.reviews.create!({
+  product_id: 1,
+  user_id: 1,
+  description: "THE BEST. THE BEST. THE BEST.",
+  rating: 4
+})
+
+product_1.reviews.create!({
+  product_id: 1,
+  user_id: 2,
+  description: "Worst. Shirt. Ever.",
+  rating: 1
+})
+
+product_2.reviews.create!({
+  product_id: 1,
+  user_id: 1,
+  description: "These pants are see-through.",
+  rating: 3
+})
+
+product_3.reviews.create!({
+  product_id: 1,
+  user_id: 1,
+  description: "Nothing screams 'nice' guy more than this hat.",
+  rating: 0
+})
+
+product_4.reviews.create!({
+  product_id: 1,
+  user_id: 2,
+  description: "Rock my socks YUH!.",
+  rating: 5
+})
+
+product_5.reviews.create!({
+  product_id: 1,
+  user_id: 2,
+  description: "Dis da DRIP!.",
+  rating: 5
+})
+
+product_6.reviews.create!({
+  product_id: 1,
+  user_id: 1,
+  description: "I bought my son these for his birthday, and he exclaimed, 'What are thoooooose!'",
+  rating: 2
+})
+
+product_7.reviews.create!({
+  product_id: 1,
+  user_id: 1,
+  description: "This is cool! What does pushing mongo mean though? Apparently that's what i'm doing...",
+  rating: 3
+})
+
+product_8.reviews.create!({
+  product_id: 1,
+  user_id: 2,
+  description: "Slice n Dice... iss nice! *dab*",
+  rating: 4
+})
+
+product_9.reviews.create!({
+  product_id: 1,
+  user_id: 2,
+  description: "After I got this, I threw away all my other jewelery. This is all I need.",
+  rating: 5
+})
+
+
 
 puts "DONE!"
