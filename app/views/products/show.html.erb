@@ -23,22 +23,25 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
           <dt>Reviews</dt>
-          <%=form_for [@product, @review] do |f| %>
-            <p>
-            <%= f.label :rating %><br>
-            <%= f.select :rating, [1,2,3,4,5] %>
-            </p>
-             <p>
-            <%= f.label :description %><br>
-            <%= f.text_area :description %>
-            </p>
-            <p>
-              <%=f.submit%>
-            </p>
+          <%if current_user%>
+            <%=form_for [@product, @review] do |f| %>
+              <p>
+              <%= f.label :rating %><br>
+              <%= f.select :rating, [1,2,3,4,5] %>
+              </p>
+              <p>
+              <%= f.label :description %><br>
+              <%= f.text_area :description %>
+              </p>
+              <p>
+                <%= f.hidden_field :user_id, :value => current_user.id %>
+                <%=f.submit%>
+              </p>
+            <% end %>
           <% end %>
           <%@product.reviews.each do |review|%>
           <dd>Rating: <%= review.rating %> Stars</dd>
-          <%end%>
+          <% end %>
           
         </dl>
       </div>
