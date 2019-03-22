@@ -3,7 +3,10 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
-
+  <% if enhanced_cart.length == 0%>
+    <h1>Your cart is currently empty!</h1>
+    <%= link_to 'Home', :root %>
+  <%else%>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -31,6 +34,7 @@
       </tfoot>
     </table>
   </div>
+  
 
   <div class="row">
     <div class="col-xs-12">
@@ -40,13 +44,14 @@
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-amount="<%= cart_subtotal_cents %>"
           data-name="Jungle"
-          data-description="Khurram Virani's Jungle Order"
+          data-description="<%= current_user ? "#{current_user.first_name} #{current_user.last_name}" : 'Guest' %>'s Jungle Order"
           data-locale="auto"
-          data-email="kvirani@gmail.com"
+          data-email="<%=current_user ? current_user.email : nil %>"
           data-currency="cad">
         </script>
       <% end %>
     </div>
   </div>
+  <% end %>
 
 </section>
