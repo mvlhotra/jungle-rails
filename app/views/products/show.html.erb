@@ -23,7 +23,7 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
           <dt>Reviews</dt>
-          <%=form_for :review do |f| %>
+          <%=form_for [@product, @review] do |f| %>
             <p>
             <%= f.label :rating %><br>
             <%= f.select :rating, [1,2,3,4,5] %>
