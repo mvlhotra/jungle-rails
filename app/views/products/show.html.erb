@@ -39,14 +39,24 @@
               </p>
             <% end %>
           <% end %>
-          <%@product.reviews.each do |review|%>
-          <dd>Rating: <%= review.rating %> Stars</dd>
-          <% end %>
-          
+          <%=@error%>
         </dl>
       </div>
     </div>
-
   </article>
-
+</section>
+<br>
+<section class = "review-table">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Review</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @product.reviews.reverse_order %>
+    </tbody>
+  </table>
 </section>
