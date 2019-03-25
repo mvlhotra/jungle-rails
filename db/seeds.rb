@@ -185,20 +185,20 @@ product_3.reviews.create!({
   product_id: 1,
   user_id: 1,
   description: "Nothing screams 'nice' guy more than this hat.",
-  rating: 0
+  rating: 1
 })
 
 product_4.reviews.create!({
   product_id: 1,
   user_id: 2,
-  description: "Rock my socks YUH!.",
+  description: "Rock my socks YUH!",
   rating: 5
 })
 
 product_5.reviews.create!({
   product_id: 1,
   user_id: 2,
-  description: "Dis da DRIP!.",
+  description: "Dis da DRIP!",
   rating: 5
 })
 

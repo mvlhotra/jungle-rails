@@ -2,10 +2,10 @@
 
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
-    <h1>Email: <%=@order.email%></h1>
+    
   </header>
 
-  <div class="order-summary jumbotron">
+  <div class="order-summary">
     <h4>Thank you for your order!</h4>
     <div class="panel panel-default items">
     <table class="table table-bordered">
@@ -30,8 +30,11 @@
             Order Total:
           </th>
           <th>
-            <%=order_total / 100.00%>
+            <%='$' + (order_total / 100.00).to_s%>
           </th>
+        </tr>
+        <tr>
+        <th colspan="5">Email: <%=@order.email%></th>
         </tr>
       </tfoot>
     </table>

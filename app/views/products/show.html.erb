@@ -1,3 +1,14 @@
+<style>
+  #review_rating{
+    width:50%;
+  }
+  #review_description{
+    width:50%;
+  }
+  #error_message{
+    color:red;
+  }
+</style>
 <section class="products-show">
 
   <header class="page-header">
@@ -22,24 +33,23 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
-          <dt>Reviews</dt>
+          <hr/>
+          <div class="col-sm-12">
           <%if current_user%>
+            <dt>Add a Review</dt>
+            <dd></dd>
             <%=form_for [@product, @review] do |f| %>
-              <p>
-              <%= f.label :rating %><br>
-              <%= f.select :rating, [1,2,3,4,5] %>
-              </p>
-              <p>
-              <%= f.label :description %><br>
-              <%= f.text_area :description %>
-              </p>
-              <p>
-                <%= f.hidden_field :user_id, :value => current_user.id %>
-                <%=f.submit%>
-              </p>
+              <dt><%= f.label :rating %></dt>
+              <dd><%= f.select :rating, ['Rating',1,2,3,4,5]%></dd>
+              <dt><%= f.label :description %></dt>
+              <dd><%= f.text_area :description %></dd>
+              <%= f.hidden_field :user_id, :value => current_user.id %>
+              <dd id="add_review_button"><%=f.submit "Add Review", class: 'btn btn-primary'%></dd>
             <% end %>
           <% end %>
-          <%=@error%>
+          <dt></dt>
+          <dd id="error_message"><%=@error%></dd>
+          </div>
         </dl>
       </div>
     </div>
@@ -48,15 +58,21 @@
 <br>
 <section class = "review-table">
   <table class="table table-bordered">
+    <h2>Reviews</h2>
+    <% if @product.reviews.count == 0 %>
+    <p>Be the first to review this product!</p>
+    <% else %>
     <thead>
       <tr>
         <th>User</th>
         <th>Review</th>
         <th>Rating</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <%= render @product.reviews.reverse_order %>
     </tbody>
   </table>
+  <% end %>
 </section>

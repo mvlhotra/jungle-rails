@@ -1,9 +1,9 @@
 <article class="product">
   <header>
-    <%cart_button = ""%>
+    <%cart_button = "btn btn-primary"%>
     <%if product.quantity == 0%>
       <aside class="sold-out">
-      <%cart_button = "disabled"%>
+      <%cart_button = "btn btn-disabled disabled"%>
       <p>SOLD OUT!</p>
     </aside>
     <%end%>
@@ -14,9 +14,14 @@
   </header>
   <p class="description">
     <%= product.description %>
+    <br>
+    <%average_rating = product.reviews.average(:rating)%>
+    <%if average_rating != nil%>
+      <p><strong>Average Rating:</strong> <%= average_rating %> / 5 </p>
+    <% end %>
   </p>
   <footer class="actions">
-    <%= button_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary'+cart_button , method: :post do %>
+    <%= button_to add_item_cart_path(product_id: product.id), class: cart_button , method: :post do %>
       <%= fa_icon "shopping-cart", text: 'Add' %>
     <% end %>
     <%= link_to product, class: 'btn btn-default pull-right' do %>
@@ -25,6 +30,9 @@
   </footer>
 
   <aside class="price">
-    <%= humanized_money_with_symbol product.price %>
+    <%= number_to_currency product.price %>
+    
   </aside>
 </article>
+
+

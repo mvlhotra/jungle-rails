@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to @product
     else
-      @error = 'Please enter a description.'
+      @error = 'Please enter a rating and rescription.'
       render 'products/show'
     end
   end
