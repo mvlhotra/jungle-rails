@@ -47,6 +47,9 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :development do
