@@ -46,6 +46,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'dotenv-rails'
   gem 'shoulda-matchers'
+  gem 'factory_bot_rails'
 end
 
 group :development do
