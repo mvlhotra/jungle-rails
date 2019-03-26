@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Visitor is navigated to product details", type: :feature, js: true do
+RSpec.feature "My Cart changes value when user clicks add to cart button", type: :feature, js: true do
   before :each do
     @category = Category.create! name: 'Apparel'
     10.times do |n|
@@ -14,14 +14,13 @@ RSpec.feature "Visitor is navigated to product details", type: :feature, js: tru
     end
   end
 
-  scenario "They click product detail button" do
+  scenario "Add to Cart button" do
     # ACT
     visit root_path
-    click_on @category.products.first.name
-
+    first('.product button').click
     # DEBUG
     save_screenshot
     # VERIFY
-    find('.products-show').visible?
+    within('nav') {expect(page).to have_content('My Cart (1)')}
   end
 end
